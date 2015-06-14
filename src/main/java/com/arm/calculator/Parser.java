@@ -8,24 +8,22 @@ import static java.lang.Integer.valueOf;
 
 class Parser {
     private static final String DEFAULT_DELIMETER = "[\n|,]";
-    private static final Context EMPTY_CONTEXT = new Context("", Collections.EMPTY_LIST);
 
-    public Context parse(String input) {
-        Context context;
+    public List<Integer> parse(String input) {
+        List<Integer> results;
+
         if ("".equals(input)) {
-            context = EMPTY_CONTEXT;
+            results = Collections.emptyList();
         } else {
             if (input.startsWith("//")) {
                 String[] inputs = input.split("\n");
                 String delimiter = inputs[0].substring(2);
-                List<Integer> numbers = parseNumbers(inputs[1], delimiter);
-                context = new Context(delimiter, numbers);
+                results = parseNumbers(inputs[1], delimiter);
             } else {
-                List<Integer> numbers = parseNumbers(input, DEFAULT_DELIMETER);
-                context = new Context(DEFAULT_DELIMETER, numbers);
+                results = parseNumbers(input, DEFAULT_DELIMETER);
             }
         }
-        return context;
+        return results;
     }
 
     private List<Integer> parseNumbers(String numberString, String delimeter) {

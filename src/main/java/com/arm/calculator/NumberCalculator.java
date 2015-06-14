@@ -1,5 +1,7 @@
 package com.arm.calculator;
 
+import java.util.List;
+
 public class NumberCalculator {
     private final Parser parser;
 
@@ -8,10 +10,10 @@ public class NumberCalculator {
     }
 
     public int add(String input) {
-        Context context = parser.parse(input);
+        List<Integer> numbers = parser.parse(input);
         int result = 0;
 
-        for (Integer value : context.getNumbers()) {
+        for (Integer value : numbers) {
             result += value;
         }
         return result;
