@@ -1,5 +1,8 @@
 package com.arm.calculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static java.lang.Integer.valueOf;
 
 public class NumberCalculator {
@@ -15,14 +18,20 @@ public class NumberCalculator {
                 input = inputs[1];
             }
             String[] numbers = input.split(delimiter);
+            List<Integer> negatives = new ArrayList<Integer>();
             for (String number : numbers) {
                 int value = valueOf(number);
                 if (value < 0) {
-                    throw new IllegalArgumentException("Negatives not allowed : " + value);
+                    negatives.add(value);
+                } else {
+                    result += value;
                 }
-                result += value;
+            }
+            if (!negatives.isEmpty()) {
+                throw new IllegalArgumentException("Negatives not allowed : " + negatives);
             }
         }
         return result;
     }
+
 }

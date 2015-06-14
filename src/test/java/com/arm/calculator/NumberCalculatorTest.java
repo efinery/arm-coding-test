@@ -61,7 +61,17 @@ public class NumberCalculatorTest {
             calculator.add("-1");
             fail("Should fail on negative number!");
         } catch (IllegalArgumentException e) {
-            assertEquals("Negatives not allowed : -1", e.getMessage());
+            assertEquals("Negatives not allowed : [-1]", e.getMessage());
+        }
+    }
+
+    @Test
+    public void should_show_all_negative_numbers_in_exception_message() {
+        try {
+            calculator.add("1,-2,-3,4");
+            fail("Should fail on negative number!");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives not allowed : [-2, -3]", e.getMessage());
         }
     }
 }
