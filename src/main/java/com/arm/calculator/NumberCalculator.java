@@ -2,10 +2,13 @@ package com.arm.calculator;
 
 public class NumberCalculator {
 
-    public int calculate(String values) {
+    public int calculate(String input) {
         int result = 0;
-        if (!"".equals(values.trim())) {
-            result = Integer.valueOf(values);
+        if (!"".equals(input.trim())) {
+            String[] numbers = input.split(",");
+            for (String number : numbers) {
+                result += Integer.valueOf(number);
+            }
         }
         return result;
     }
