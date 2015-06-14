@@ -16,7 +16,11 @@ public class NumberCalculator {
             }
             String[] numbers = input.split(delimiter);
             for (String number : numbers) {
-                result += valueOf(number);
+                int value = valueOf(number);
+                if (value < 0) {
+                    throw new IllegalArgumentException("Negatives not allowed : " + value);
+                }
+                result += value;
             }
         }
         return result;

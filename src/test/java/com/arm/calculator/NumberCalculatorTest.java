@@ -3,6 +3,7 @@ package com.arm.calculator;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertEquals;
 
 public class NumberCalculatorTest {
@@ -47,5 +48,20 @@ public class NumberCalculatorTest {
     public void should_handle_change_of_delimiter() {
         int result = calculator.add("//;\n1;2");
         assertEquals(3, result);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void should_fail_on_negative_number() {
+        calculator.add("-1");
+    }
+
+    @Test
+    public void should_show_negative_number_in_exception_message() {
+        try {
+            calculator.add("-1");
+            fail("Should fail on negative number!");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Negatives not allowed : -1", e.getMessage());
+        }
     }
 }
