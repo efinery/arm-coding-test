@@ -27,13 +27,13 @@ public class NumberCalculatorTest {
 
     @Test
     public void should_handle_two_nubers() {
-        int result = calculator.calculate("1,2");
+        int result = calculator.calculate("1\n2");
         assertEquals(3, result);
     }
 
     @Test
     public void should_handle_many_nubers() {
-        int result = calculator.calculate("1,2,3,100");
+        int result = calculator.calculate("1\n2\n3\n100");
         assertEquals(106, result);
     }
 }
