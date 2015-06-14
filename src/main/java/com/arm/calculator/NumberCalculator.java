@@ -5,7 +5,7 @@ public class NumberCalculator {
     public int calculate(String input) {
         int result = 0;
         if (!"".equals(input.trim())) {
-            String[] numbers = input.split("\n");
+            String[] numbers = input.split("[\n|,]");
             for (String number : numbers) {
                 result += Integer.valueOf(number);
             }

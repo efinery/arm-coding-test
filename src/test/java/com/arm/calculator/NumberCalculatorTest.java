@@ -36,4 +36,10 @@ public class NumberCalculatorTest {
         int result = calculator.calculate("1\n2\n3\n100");
         assertEquals(106, result);
     }
+
+    @Test
+    public void should_handle_commas_and_newlines() {
+        int result = calculator.calculate("1\n2,3");
+        assertEquals(6, result);
+    }
 }
