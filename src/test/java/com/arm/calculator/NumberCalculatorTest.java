@@ -18,4 +18,10 @@ public class NumberCalculatorTest {
         int result = calculator.calculate("");
         assertEquals(0, result);
     }
+
+    @Test
+    public void should_handle_single_number() {
+        int result = calculator.calculate("1");
+        assertEquals(1, result);
+    }
 }
