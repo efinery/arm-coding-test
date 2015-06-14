@@ -1,19 +1,21 @@
 package com.arm.calculator;
 
+import java.util.List;
+
 class Context {
     private final String delimeter;
-    private final String input;
+    private final List<Integer> numbers;
 
-    public Context(String delimeter, String input) {
+    public Context(String delimeter, List<Integer> numbers) {
         this.delimeter = delimeter;
-        this.input = input;
+        this.numbers = numbers;
     }
 
     public String getDelimeter() {
         return delimeter;
     }
 
-    public String getInput() {
-        return input;
+    public List<Integer> getNumbers() {
+        return numbers;
     }
 }
