@@ -6,9 +6,14 @@ import java.util.List;
 import static java.lang.Integer.valueOf;
 
 public class NumberCalculator {
+    private final Parser parser;
+
+    public NumberCalculator(Parser parser) {
+        this.parser = parser;
+    }
 
     public int add(String input) {
-        Context context = new Parser().parse(input);
+        Context context = parser.parse(input);
         int result = 0;
 
         if (!"".equals(context.getInput())) {
