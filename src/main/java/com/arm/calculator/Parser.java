@@ -8,6 +8,11 @@ import static java.lang.Integer.valueOf;
 
 class Parser {
     private static final String DEFAULT_DELIMITER = "[\n|,]";
+    private final Filter filter;
+
+    Parser(Filter filter) {
+        this.filter = filter;
+    }
 
     public List<Integer> parse(String input) {
         List<Integer> results;
@@ -23,13 +28,13 @@ class Parser {
                 results = parseNumbers(input, DEFAULT_DELIMITER);
             }
         }
-        return results;
+        return filter.filter(results);
     }
 
     private List<Integer> parseNumbers(String numberString, String delimiter) {
-        String[] numbers = numberString.split(delimiter);
         List<Integer> results = new ArrayList<Integer>();
 
+        String[] numbers = numberString.split(delimiter);
         for (String number : numbers) {
             int value = valueOf(number);
             results.add(value);

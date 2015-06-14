@@ -11,7 +11,7 @@ public class CalculatorTest {
 
     @Before
     public void setUp() throws Exception {
-        calculator = new Calculator(new Parser(), new Filter());
+        calculator = new Calculator(new Parser(new Filter()));
     }
 
     @Test

@@ -4,16 +4,13 @@ import java.util.List;
 
 public class Calculator {
     private final Parser parser;
-    private final Filter filter;
 
-    public Calculator(Parser parser, Filter filter) {
+    public Calculator(Parser parser) {
         this.parser = parser;
-        this.filter = filter;
     }
 
     public int add(String input) {
-        List<Integer> allNumbers = parser.parse(input);
-        List<Integer> numbers = filter.filter(allNumbers);
+        List<Integer> numbers = parser.parse(input);
         int result = 0;
 
         for (Integer value : numbers) {
