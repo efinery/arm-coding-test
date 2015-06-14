@@ -1,4 +1,7 @@
-package com.arm.calculator;
+package com.arm.calculator.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -6,10 +9,12 @@ import java.util.List;
 
 import static java.lang.Integer.valueOf;
 
+@Service
 class Parser {
-    private static final String DEFAULT_DELIMITER = "[\n|,]";
+    private static final String DEFAULT_DELIMITER = "[\n,]";
     private final Filter filter;
 
+    @Autowired
     Parser(Filter filter) {
         this.filter = filter;
     }

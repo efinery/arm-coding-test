@@ -1,4 +1,4 @@
-package com.arm.calculator;
+package com.arm.calculator.service;
 
 import org.junit.Before;
 import org.junit.Test;
