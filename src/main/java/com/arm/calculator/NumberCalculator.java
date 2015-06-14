@@ -8,16 +8,11 @@ import static java.lang.Integer.valueOf;
 public class NumberCalculator {
 
     public int add(String input) {
-        String delimiter = "[\n|,]";
+        Context context = new Parser().parse(input);
         int result = 0;
 
-        if (!"".equals(input)) {
-            if (input.startsWith("//")) {
-                String[] inputs = input.split("\n");
-                delimiter = inputs[0].substring(2);
-                input = inputs[1];
-            }
-            String[] numbers = input.split(delimiter);
+        if (!"".equals(context.getInput())) {
+            String[] numbers = context.getInput().split(context.getDelimeter());
             List<Integer> negatives = new ArrayList<Integer>();
             for (String number : numbers) {
                 int value = valueOf(number);
