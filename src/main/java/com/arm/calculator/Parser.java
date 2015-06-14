@@ -7,7 +7,7 @@ import java.util.List;
 import static java.lang.Integer.valueOf;
 
 class Parser {
-    private static final String DEFAULT_DELIMETER = "[\n|,]";
+    private static final String DEFAULT_DELIMITER = "[\n|,]";
 
     public List<Integer> parse(String input) {
         List<Integer> results;
@@ -20,26 +20,19 @@ class Parser {
                 String delimiter = inputs[0].substring(2);
                 results = parseNumbers(inputs[1], delimiter);
             } else {
-                results = parseNumbers(input, DEFAULT_DELIMETER);
+                results = parseNumbers(input, DEFAULT_DELIMITER);
             }
         }
         return results;
     }
 
-    private List<Integer> parseNumbers(String numberString, String delimeter) {
-        String[] numbers = numberString.split(delimeter);
+    private List<Integer> parseNumbers(String numberString, String delimiter) {
+        String[] numbers = numberString.split(delimiter);
         List<Integer> results = new ArrayList<Integer>();
-        List<Integer> negatives = new ArrayList<Integer>();
+
         for (String number : numbers) {
             int value = valueOf(number);
-            if (value < 0) {
-                negatives.add(value);
-            } else {
-                results.add(value);
-            }
-        }
-        if (!negatives.isEmpty()) {
-            throw new IllegalArgumentException("Negatives not allowed : " + negatives);
+            results.add(value);
         }
         return results;
     }

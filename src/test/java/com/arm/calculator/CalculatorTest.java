@@ -6,12 +6,12 @@ import org.junit.Test;
 import static junit.framework.TestCase.fail;
 import static org.junit.Assert.assertEquals;
 
-public class NumberCalculatorTest {
-    private NumberCalculator calculator;
+public class CalculatorTest {
+    private Calculator calculator;
 
     @Before
     public void setUp() throws Exception {
-        calculator = new NumberCalculator(new Parser());
+        calculator = new Calculator(new Parser(), new Filter());
     }
 
     @Test
@@ -74,4 +74,17 @@ public class NumberCalculatorTest {
             assertEquals("Negatives not allowed : [-2, -3]", e.getMessage());
         }
     }
+
+    @Test
+    public void should_include_numbers_below_one_thousand() {
+        int result = calculator.add("1,999,1000");
+        assertEquals(2000, result);
+    }
+
+    @Test
+    public void should_ignore_numbers_over_one_thousand() {
+        int result = calculator.add("2,1001");
+        assertEquals(2, result);
+    }
+
 }

@@ -2,15 +2,18 @@ package com.arm.calculator;
 
 import java.util.List;
 
-public class NumberCalculator {
+public class Calculator {
     private final Parser parser;
+    private final Filter filter;
 
-    public NumberCalculator(Parser parser) {
+    public Calculator(Parser parser, Filter filter) {
         this.parser = parser;
+        this.filter = filter;
     }
 
     public int add(String input) {
-        List<Integer> numbers = parser.parse(input);
+        List<Integer> allNumbers = parser.parse(input);
+        List<Integer> numbers = filter.filter(allNumbers);
         int result = 0;
 
         for (Integer value : numbers) {
