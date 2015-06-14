@@ -1,13 +1,22 @@
 package com.arm.calculator;
 
+import static java.lang.Integer.valueOf;
+
 public class NumberCalculator {
 
-    public int calculate(String input) {
+    public int add(String input) {
+        String delimiter = "[\n|,]";
         int result = 0;
-        if (!"".equals(input.trim())) {
-            String[] numbers = input.split("[\n|,]");
+
+        if (!"".equals(input)) {
+            if (input.startsWith("//")) {
+                String[] inputs = input.split("\n");
+                delimiter = inputs[0].substring(2);
+                input = inputs[1];
+            }
+            String[] numbers = input.split(delimiter);
             for (String number : numbers) {
-                result += Integer.valueOf(number);
+                result += valueOf(number);
             }
         }
         return result;

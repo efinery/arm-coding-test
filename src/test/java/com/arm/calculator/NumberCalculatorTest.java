@@ -15,31 +15,37 @@ public class NumberCalculatorTest {
 
     @Test
     public void should_handle_empty_string() {
-        int result = calculator.calculate("");
+        int result = calculator.add("");
         assertEquals(0, result);
     }
 
     @Test
     public void should_handle_single_number() {
-        int result = calculator.calculate("1");
+        int result = calculator.add("1");
         assertEquals(1, result);
     }
 
     @Test
     public void should_handle_two_nubers() {
-        int result = calculator.calculate("1\n2");
+        int result = calculator.add("1\n2");
         assertEquals(3, result);
     }
 
     @Test
     public void should_handle_many_nubers() {
-        int result = calculator.calculate("1\n2\n3\n100");
+        int result = calculator.add("1\n2\n3\n100");
         assertEquals(106, result);
     }
 
     @Test
     public void should_handle_commas_and_newlines() {
-        int result = calculator.calculate("1\n2,3");
+        int result = calculator.add("1\n2,3");
         assertEquals(6, result);
+    }
+
+    @Test
+    public void should_handle_change_of_delimiter() {
+        int result = calculator.add("//;\n1;2");
+        assertEquals(3, result);
     }
 }
