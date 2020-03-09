@@ -1,5 +1,5 @@
 # arm-coding-test
-Cording test for ARM
+Coding test for ARM
 
 To run:
 mvn sprint-boot:run
